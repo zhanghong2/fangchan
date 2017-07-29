@@ -1,0 +1,38 @@
+.swiper-tab{  
+    width: 100%;  
+    border-bottom: 2rpx solid #777777;  
+    text-align: center;  
+    line-height: 80rpx;
+}  
+    
+.swiper-tab-list{  font-size: 30rpx;  
+    display: inline-block;  
+    width: 33.33%;  
+    color: #777777;  
+}  
+.on{ color: #3fae2a;  
+    border-bottom: 5rpx solid #3fae2a;}  
+.show{display:block;}
+.hide{display:none;}
+.sydk{
+  line-height:46px;
+  font-size:14px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  border-bottom:1px solid #eee; 
+  box-sizing:border-box;
+  padding:0px 16px;
+  align-self:center;
+}
+.sydk .sydkt{
+  flex:1 1 50%;
+}
+.sydk .sydkx{
+  flex:1 1 50%;text-align:right;
+}
+.sydkx input{width:100%;height:100%;text-align:right;}
+.jgshuju{display:flex;align-items:center;
+  box-sizing:border-box;color:#505662;
+}
+.jgact{background:#3fae2a;color:white;}

@@ -1,0 +1,67 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view class="row1">
+    <view class="diqu">
+      邯郸
+    </view>
+    <view class='sousuo' bindtap="sousuo">
+      <view class="ssbtn">
+        <image src='../../images/ss.png'></image>
+      </view>
+      <input type="text" placeholder='小区名/区域'/>
+    </view>
+  </view>
+  <view class="row2">
+      <view class='list'>
+        <navigator url="../list/ershou/ershou" hover-class="">
+          <image src='../../images/esa.png' ></image>
+           <view><text>二手房</text></view>
+       </navigator>
+      </view>
+      <view class='list'>
+        <navigator url="../list/chuzu/chuzu" hover-class="">
+          <image src='../../images/cza.png' ></image>
+           <view><text>出租房</text></view>
+       </navigator>
+      </view>
+      <view class='list'>
+        <navigator url="../logs/logs" hover-class="">
+          <image src='../../images/fd.png' ></image>
+           <view><text>房贷计算器</text></view>
+       </navigator>
+      </view>
+   </view>
+   <view class="zxerf">
+    <view class="title">最新二手房</view>
+   </view>
+   <view class="esfy">
+      <block wx:for='{{eslist}}' >
+      <navigator open-type='navigate'  url='../house/ershou/ershou?id={{item.id}}' hover-class='none'>
+      <view class='list' >
+        <view class='li_img'>
+          <image src="http://yuanmengjiafc.com/Public/esupload/{{item.img}}"></image>
+        </view>
+        <view class='li_msg'>
+            <view style="font-size:14px;margin-bottom:6px;">
+              {{item.title}}
+            </view>
+            <view style="font-size:12px;margin-bottom:6px;">
+               {{item.meter}}㎡   {{item.hx}}   {{item.cx}}
+            </view>
+            <view style="font-size:12px;">
+              {{item.village}}
+            </view>
+        </view>
+        <view class="li_price">
+          <view style="color:red;margin-bottom:6px;"><text style="font-weight:bold;"> {{item.price}}</text>万</view>
+          <view style="font-size:12px;">{{item.dan}}元/㎡</view>
+        </view>
+      </view>
+      </navigator>
+      </block>
+   </view>
+     <loading hidden="{{loadingHidden}}">
+        加载中...
+    </loading>
+</view>

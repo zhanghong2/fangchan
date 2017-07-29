@@ -1,0 +1,17 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view class="row1">
+    <view class="diqu">
+      二手房
+    </view>
+   <view class='sousuo' >
+      <view class="ssbtn">
+        <image src='../../images/ss.png'></image>
+     </view>
+      <input type="text" placeholder='小区名/区域'  bindblur="sousuokey"/>
+    </view>
+    <button style="width:80px;padding:0;margin:0;line-height:30px;" bindtap="dianji">搜索</button>
+  </view>
+ 
+</view>

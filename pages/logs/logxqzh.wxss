@@ -1,0 +1,38 @@
+/* pages/logs/logxq.wxss */
+.show{
+  display:block;
+}
+.hide{
+  display:none;
+}
+.on{
+  color:#3fae2a;
+  border-bottom:2px solid #3fae2a;
+}
+.header{
+  display:flex;flex-direction: row;justify-content:space-around;border-bottom:1px solid #eee;
+  background:white;
+}
+.h_list{
+  padding:10px;
+}
+.msg{
+  display:flex;flex-direction: row;padding:10px 0px;line-height:20px;
+  background:white;border-bottom:1px solid #eee;
+}
+.m_list{
+  flex:1 1 25%;text-align:center;font-size:12px;
+}
+.m_list:not(:last-child) { border-right: 1px solid #eee; }
+.title{
+  display:flex;flex-direction: row;background:white;
+  margin:8px 0px 2px;
+}
+.t_list {  text-align:center;font-size:12px;padding:10px 0px;}
+.title .t_list:not(:last-child){border-right: 1px solid #eee; }
+.hkmsg{
+  background:white;font-size:12px;
+}
+.hkm_yue{
+  display:flex;flex-direction: row;
+}

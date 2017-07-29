@@ -1,0 +1,96 @@
+<!--pages/list/ershou/ershou.wxml-->
+<view class='shaixuan'>
+  <view class='tit' bindtap="quyu" data-index='1'>{{qytj==''?'区域':quyu[qytj].quyu}}<image src="../../../images/{{navlist==1?'shang':'xia'}}.png" style="width:12px;height:12px;"></image></view>
+  <view class='tit' bindtap="jiage" data-index='2'>{{jgtj==''?'价格':jiage[jgtj].jg}}<image src="../../../images/{{navlist==2?'shang':'xia'}}.png" style="width:12px;height:12px;"></image></view>
+  <view class='tit' bindtap="hux" data-index='3'>{{hxtj==''?'户型':hux[hxtj].hux}}<image src="../../../images/{{navlist==3?'shang':'xia'}}.png" style="width:12px;height:12px;"></image></view>
+  <view class='tit' bindtap="gengd" data-index='4'>更多<image src="../../../images/{{navlist==4?'shang':'xia'}}.png" style="width:12px;height:12px;"></image></view>
+</view>
+
+<view class="quyutj {{navlist==1?'show':'hidden'}}">
+  <block wx:for="{{quyu}}">
+    <view class='qylist' data-qy="{{item.qykey}}" bindtap="qyxz">{{item.quyu}}</view>
+  </block>
+</view>
+
+<view class="quyutj {{navlist==2?'show':'hidden'}}">
+  <block wx:for="{{jiage}}">
+    <view class='qylist' data-jg="{{item.jgkey}}" bindtap="jgxz">{{item.jg}}</view>
+  </block>
+</view>
+
+<view class="quyutj {{navlist==3?'show':'hidden'}}">
+  <block wx:for="{{hux}}">
+    <view class='qylist' data-jg="{{item.hxkey}}" bindtap="huxxz">{{item.hux}}</view>
+  </block>
+</view>
+<view class="gdfilter {{navlist==4?'show':'hidden'}}">
+  <view class='fil-section'>
+    <view style="width:100%;padding-bottom:5px;border-bottom:1px solid #eee;">
+      装修
+    </view>
+     <block wx:for="{{deco}}">
+     <view class="fils-con {{item.deckey==dectj?'fil-act':''}}" data-dec="{{item.deckey}}" bindtap="decxz">{{item.deco}}</view>
+    </block>
+  </view>
+  <view class='fil-section'>
+    <view style="width:100%;padding-bottom:5px;border-bottom:1px solid #eee;">
+      朝向
+    </view>
+     <block wx:for="{{cx}}">
+     <view class="fils-con {{item.cxkey==cxtj?'fil-act':''}}" data-cx="{{item.cxkey}}" bindtap="cxxz">{{item.cx}}</view>
+    </block>
+    
+  </view>
+  <view class='fil-section'>
+    <view style="width:100%;padding-bottom:5px;border-bottom:1px solid #eee;">
+      面积
+    </view>
+     <block wx:for="{{mianji}}">
+     <view class="fils-con {{item.mjkey==mjtj?'fil-act':''}}" data-mj="{{item.mjkey}}" bindtap="mjxz">{{item.mj}}</view>
+    </block>
+  </view>
+  <view style="width:100%;clear:both;display:flex;">
+    <view style="margin:5px;float:left;flex:1 1 50%;">
+       <button bindtap='gdqx'>
+         取消选择
+       </button>
+    </view>
+    <view style="margin:5px;float:left;flex:1 1 50%;">
+       <button bindtap='gdxz' style="background:#5db0ff;color:white;">
+         确认条件
+       </button>
+    </view>
+  </view>
+</view>
+<view style="position:fixed;width:100%;height:100%;background:black;z-index:33;opacity:0.1;" class="{{navlist==''?'hidden':'show'}}" bindtap='tiaojianbg'>
+</view>
+<view class="esfy {{navlist==''?'show':'hidden'}}">
+      <block wx:for='{{eslist}}' >
+      <navigator open-type='navigate'  url='../../house/ershou/ershou?id={{item.id}}' hover-class='none'>
+      <view class='list' >
+        <view class='li_img'>
+          <image src="http://yuanmengjiafc.com/Public/esupload/{{item.img}}"></image>
+        </view>
+        <view class='li_msg'>
+            <view style="font-size:14px;margin-bottom:6px;">
+              {{item.title}}
+            </view>
+            <view style="font-size:12px;margin-bottom:6px;">
+               {{item.meter}}㎡   {{item.hx}}   {{item.cx}}
+            </view>
+            <view style="font-size:12px;">
+              {{item.village}}
+            </view>
+        </view>
+        <view class="li_price">
+          <view style="color:red;margin-bottom:6px;"><text style="font-weight:bold;"> {{item.price}}</text>万</view>
+          <view style="font-size:12px;">{{item.dan}}元/㎡</view>
+        </view>
+      </view>
+      </navigator>
+      </block>
+      <loading hidden="{{loadingHidden}}">
+        加载中...
+       </loading>
+</view>
+

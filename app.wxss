@@ -1,0 +1,22 @@
+/**app.wxss**/
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  flex-wrap:wrap;
+  width: 100%;
+  font-size: 16px;
+  color: #2a2a2a;
+  background:#eee;
+}
+
+
+page{
+  height:100%;
+}
+.clearfix{
+  overflow:hidden;
+  _zoom:1;
+ }

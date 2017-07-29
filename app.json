@@ -1,0 +1,24 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/sousuo",
+    "pages/logs/logs",
+    "pages/logs/logt",
+    "pages/logs/logtt",
+    "pages/logs/logxq",
+    "pages/logs/logxqzh",
+    "pages/commodity_house/list/list",
+    "pages/commodity_house/index/index",
+    "pages/house/ershou/ershou",
+    "pages/house/chuzu/chuzu",
+    "pages/list/ershou/ershou",
+    "pages/list/chuzu/chuzu"
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3fae2a",
+    "backgroundColor": "#f2f2f2",
+    "navigationBarTitleText": "园梦佳",
+    "navigationBarTextStyle": "white"
+  }
+}

@@ -1,0 +1,8 @@
+
+.house-meta {
+  max-height: 300rpx;
+  overflow: hidden;
+}
+.house-meta .meta-value {
+  color: #bbb;
+}

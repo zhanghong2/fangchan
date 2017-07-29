@@ -1,0 +1,200 @@
+<!--logs.wxml-->
+<view class="swiper-tab">  
+  <navigator url="logs" class="swiper-tab-list" open-type="redirect" hover-class="none"><view >商业贷款</view>  </navigator>  
+  <navigator url="logt" class="swiper-tab-list" open-type="redirect" hover-class="none" > <view >公积金贷款</view></navigator> 
+  <view class="swiper-tab-list on">组合型贷款</view>
+</view>  
+<view>
+      <view class="sydk">
+        <view class="sydkt" style="flex:1 1 35%;">
+          商业贷款
+        </view>
+        <view class="sydkx" style="flex:1 1 65%;" >
+          <radio-group class="radio-group" bindchange="radioChange" data-lx="sydk">
+            <label class="radio">
+            <radio value="0" checked="checked" color=''/>等额本金
+            </label>
+            <label class="radio" >
+            <radio value="1" checked="" color=''/>等额本息
+            </label>
+          </radio-group>
+        </view>
+      </view>  
+      <view class="sydk" >
+        <view class="sydkt" style="flex:1 1 35%;">
+          计算方式
+        </view>
+        <view class="sydkx" style="flex:1 1 65%;">
+            按贷款总额
+        </view>
+      </view>  
+      <view class="sydk">
+        <view class="sydkt" >
+          商业贷款
+        </view>
+        <view class="sydkx" >
+          <view style="height:100%;width:70%;float:left;">
+             <input type="number"  placeholder="请输入贷款" bindinput="szpd" bindblur="sydk"/>
+          </view>
+          <view style="height:100%;width:30%;float:left;"> 万元  </view>
+        </view>
+      </view> 
+      <view class="sydk"> 
+        <view class="sydkt">
+         商贷利率
+        </view>
+        <view class="sydkx" bindtap="lvxzjg" data-index='1'>
+       {{lvindex=='0'?' 基准利率(4.9%)':sdlv+"%"}}  >
+        </view>
+      </view>
+      <view class="sydk">
+        <view class="sydkt" >
+           公积金贷款
+        </view>
+        <view class="sydkx" >
+          <view style="height:100%;width:70%;float:left;">
+             <input type="number"  placeholder="请输入贷款" bindinput="szpd" bindblur="gjjdk"/>
+          </view>
+          <view style="height:100%;width:30%;float:left;"> 万元  </view>
+        </view>
+      </view> 
+      <view class="sydk"> 
+        <view class="sydkt">
+        公积金利率
+        </view>
+        <view class="sydkx" bindtap="lvxzjg" data-index='2'>
+       {{lvindex2=='0'?' 基准利率(3.25%)':gjjlv+"%"}}  >
+        </view>
+      </view> 
+      <view class="sydk">
+          <view class="sydkt">
+           货款期限
+          </view>
+          <view class="sydkx">
+            {{qxmsg}}  
+          </view>
+          <view style="width:100%;position:relative;">
+             <slider bindchange="slider4change" min="1" max="30" show-value value="20"/><text style="position:absolute;right:0;top:10px;">年</text>
+          </view>
+      </view>
+       
+       <view class='sydk'>
+        <button style="width:1100%;" bindtap='ksjisuan'>开始计算</button>
+       </view>
+</view>
+
+<view class="{{jgxs==0?'hide':'show'}}">
+<view style="display:flex;justify-content:center;margin-top:20px;text-align:center;">
+  <view style="flex:0 1 30%;padding:5px 0px;" class="{{sydkact==0?'jgact':''}}" bindtap="daikuanqh" data-qh='0'>
+    等额本息
+  </view>
+  <view style="flex:0 1 30%;padding:5px 0px;" class="{{sydkact==1?'jgact':''}}" bindtap="daikuanqh" data-qh='1'>
+    等额本金
+  </view>
+</view>
+
+<view class="{{sydkact==0?'show':'hide'}}">
+<view class="jgshuju" style="margin:10px;">
+  <view style="flex:1 1 60%;">
+    <view>参考月供:</view>
+    <view style="color:red;">{{fmobj.month_money1}}元</view>
+    <view>每月还款额固定</view>
+  </view> 
+  <navigator url="logxqzh?sydk={{sydk}}&gjjdk={{gjjdk}}&gjjlv={{gjjlv}}&sylv={{sdlv}}&nx={{dkqx}}&hkzeo={{fmobj.all_total1}}&hkzet={{fmobj.all_total2}}&act={{sydkact}}"   hover-class="none" >  
+  <view style="flex:1 1 40%;text-align:right;">
+  查看详情 >
+  </view>
+  </navigator >
+</view>
+<view class="jgshuju" style="text-align:center;padding:10px 0px;border-top:1px solid #eee;">
+  <view style="flex:1 1 33%;margin-top:10px;border-right:1px solid #eee;">
+    货款总额(元)
+    {{fmobj.daikuan_total1 }}万
+  </view>
+  <view style="flex:1 1 33%;margin-top:10px;border-right:1px solid #eee;">
+    支付利息(元)
+    {{fmobj.accrual1}}万
+  </view>
+  <view style="flex:1 1 33%;margin-top:10px;">
+    还款总额(元)
+    {{fmobj.all_total1}}万
+  </view>
+</view>
+</view>
+
+<view class="{{sydkact==1?'show':'hide'}}">
+<view class="jgshuju" style="margin:10px;">
+  <view style="flex:1 1 60%;" >
+    <view>参考月供</view>
+    <view style="color:red;">{{fmobj.month_money2}}元</view>
+    <view>每月递减{{bjdj}}元</view>
+  </view> 
+  <navigator url="logxqzh?sydk={{sydk}}&gjjdk={{gjjdk}}&gjjlv={{gjjlv}}&sylv={{sdlv}}&nx={{dkqx}}&hkzeo={{fmobj.all_total1}}&hkzet={{fmobj.all_total2}}&act={{sydkact}}"   hover-class="none" > 
+  <view style="flex:1 1 40%;text-align:right;">
+  查看详情 >
+  </view>
+  </navigator>
+</view>
+<view class="jgshuju" style="text-align:center;padding:10px 0px;border-top:1px solid #eee;">
+   <view style="flex:1 1 33%;margin-top:10px;border-right:1px solid #eee;">
+    货款总额(元)
+    {{fmobj.daikuan_total2}}万
+  </view>
+  <view style="flex:1 1 33%;margin-top:10px;border-right:1px solid #eee;">
+    支付利息(元)
+     {{fmobj.accrual2}}万
+  </view>
+  <view style="flex:1 1 33%;margin-top:10px;">
+    还款总额(元)
+  {{fmobj.all_total2}}万
+  </view>
+</view>
+</view>
+</view>
+
+<view style="position:absolute;z-index:9;background:black;opacity:0.5;width:100%;height:100%;top:0;" class="{{lvxz==''?'hide':'show'}}">
+</view>
+<view style="position:fixed;bottom:0;width:100%;background:white;z-index:19;" class="{{lvxz=='1'?'show':'hide'}}">
+  <view style="width:100%;text-align:center;padding:5px 0px;border-bottom:1px solid red;">
+      贷款利率<view style="float:right;margin-right:5px;" bindtap="qxlvxz">取消</view>
+  </view>
+  <scroll-view scroll-y style="height: 160px;">
+    <block wx:for="{{dklvdata}}">
+      <view style="padding:5px 0px; text-align:center;border-bottom:1px solid #eee;" data-lv="{{item.lv}}" data-index="{{item.lvindex}}" bindtap="lvxzlist">{{item.lvmc}}</view>
+    </block>
+  </scroll-view>
+  <view style="width:100%;display:flex;padding:10px;">
+    <view style="flex:0 1 30%;">
+      自定义利率:
+    </view>
+     <view style="flex:0 1 40%;">
+      <input type="number" style="border:1px solid #eee;" placeholder="请输入利率" bindinput="lvsrpd" bindblur="lvsr"/>
+    </view>
+     <view style="flex:1 1 30%;" bindtap="lvsrqr">
+     %  确认
+    </view>
+  </view>
+</view>
+
+<view style="position:fixed;bottom:0;width:100%;background:white;z-index:19;" class="{{lvxz=='2'?'show':'hide'}}">
+  <view style="width:100%;text-align:center;padding:5px 0px;border-bottom:1px solid red;">
+      公积金利率<view style="float:right;margin-right:5px;" bindtap="qxlvxz">取消</view>
+  </view>
+  <scroll-view scroll-y style="height: 160px;">
+    <block wx:for="{{gjjlvdata}}">
+      <view style="padding:5px 0px; text-align:center;border-bottom:1px solid #eee;" data-lv="{{item.lv}}" data-index="{{item.lvindex}}" bindtap="lvxzlist2">{{item.lvmc}}</view>
+    </block>
+  </scroll-view>
+  <view style="width:100%;display:flex;padding:10px;">
+    <view style="flex:0 1 30%;">
+      自定义利率:
+    </view>
+     <view style="flex:0 1 40%;">
+      <input type="number" style="border:1px solid #eee;" placeholder="请输入利率" bindinput="lvsrpd" bindblur="lvsr2" />
+    </view>
+     <view style="flex:1 1 30%;" bindtap="lvsrqr2">
+     %  确认
+    </view>
+  </view>
+</view>
+

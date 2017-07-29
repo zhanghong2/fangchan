@@ -1,0 +1,71 @@
+<!--pages/house/ershou/ershou.wxml-->
+<view class="container">
+   <scroll-view scroll-y style="height:{{scrollheight}}px;">
+   <view style="height:200px;width:100%;">
+   <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:100%;width:100%;">
+          <block wx:for-items="{{esmsg.tupian}}">
+              <swiper-item >
+                 <view class="swiper-item" style="height:100%;">
+                   <image src='http://yuanmengjiafc.com/Public/esupload/{{item}}' style='width:100%;height:100%;'></image>
+                 </view>
+              </swiper-item>
+         </block>
+    </swiper>
+    </view>
+    <view style="width:100%;background:white;margin-bottom:5px;">
+        <view style="padding:10px;">{{esmsg.titleTop}}</view>
+    </view>
+    <view class="ermsg">
+      <view class='msglist' style="border-right:1px solid #f7f7f7;">
+        <view style='color:#8c8c8c;'>房租</view>
+        <view style="color:red; margin-top:12px;">{{esmsg.jg}}元/月</view>
+      </view>
+      <view class='msglist' style="border-right:1px solid #f7f7f7;">
+        <view style='color:#8c8c8c;'>户型</view>
+        <view style="color:red; margin-top:12px;">{{esmsg.hux}}</view>
+      </view>
+      <view class='msglist'>
+        <view style='color:#8c8c8c;'>面积</view>
+        <view style="color:red;margin-top:12px;">{{esmsg.pm}}㎡</view>
+      </view>
+    </view>
+    <view class="erxiangx">
+      <view style="flex:1 0 100%;color:#8c8c8c;margin-bottom:10px;">出租方式:<text>{{esmsg.czfs}}</text></view>
+      <view style="flex:1 0 100%;color:#8c8c8c;margin-bottom:10px;">付款方式:<text>{{esmsg.fkfs}}</text></view>
+      <view class='xxmsg'>楼层:<text>{{esmsg.lc}}/共{{esmsg.zc}}层</text></view>
+      <view class='xxmsg'>朝向:<text>{{esmsg.cx}}</text></view>
+      <view class='xxmsg'>装修:<text>{{esmsg.zx}}</text></view>
+      <view class='xxmsg'>楼龄:<text>{{esmsg.nl}}</text></view>
+       <view style="flex:1 0 100%;color:#8c8c8c;">发布时间:<text>{{esmsg.time}}</text></view>
+    </view>
+    <view style="width:100%;background:white;margin:2px 0px;color:#8c8c8c;">
+      <view style="padding:10px;">小区名称:<text>{{esmsg.xqmc}}</text></view>
+    </view>
+    <view style="width:100%;background:white;margin-bottom:2px;color:#8c8c8c;">
+      <view style="padding:10px;">位置:<text>[{{esmsg.area}}]{{esmsg.weizhi}}</text></view>
+    </view>
+    <view style="width:100%;background:white;margin-bottom:2px;padding:10px 0px 30px;">
+      <view style="margin:10px;border-left:1px solid green;padding-left:20px;color:#8c8c8c;">房源描述:</view>
+      <view style="margin:10px;">
+        {{esmsg.fyms}}
+      </view>
+    </view>
+    </scroll-view>
+    <view style="position:fixed;width:100%;bottom:0px;background:#eee;">
+        <view style="margin:10px;display:flex;">
+          <view style="flex:1 1 50%;">
+            联系人:{{esmsg.men}}
+            <view>{{esmsg.cell}}</view>
+          </view>
+          <view style="flex:1 1 50%;">
+            <button style="background:#de3031;color:white;" bindtap='boda'>
+            打电话
+            </button>
+          </view>
+        </view>
+    </view>
+    <loading hidden="{{loadingHidden}}">
+        加载中...
+    </loading>
+</view>
